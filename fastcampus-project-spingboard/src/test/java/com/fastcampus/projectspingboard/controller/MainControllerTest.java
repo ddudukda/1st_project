@@ -1,37 +1,31 @@
 package com.fastcampus.projectspingboard.controller;
 
 import com.fastcampus.projectspingboard.config.SecurityConfig;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.context.annotation.Import;
-import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
-@DisplayName("View 컨트롤러 - 인증")
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 @Import(SecurityConfig.class)
-@WebMvcTest
-public class AuthControllerTest {
+@WebMvcTest(MainController.class)
+class MainControllerTest {
 
     private final MockMvc mvc;
 
-    public AuthControllerTest(@Autowired MockMvc mvc){
+    public MainControllerTest(@Autowired MockMvc mvc){
         this.mvc = mvc;
     }
 
-    @DisplayName("[view][GET] 로그인 페이지 호출")
     @Test
-    public void givenNothing_whenTryingToLoginIn_thenReturnLoginInView() throws Exception {
+    void givenNothing_whenRequestingRootPage_thenRedirectsArticlesPage() throws Exception {
         //given
-
         //when&then
-        mvc.perform(get("/login"))
-                .andExpect(status().isOk())
-                .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML));
+        mvc.perform(get("/"))
+                .andExpect(status().is3xxRedirection());
     }
 
 }
