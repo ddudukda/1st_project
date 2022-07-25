@@ -12,6 +12,9 @@
 ### Querydsl
 /src/main/generated
 
+### JPABUDDY
+.jpb/
+
 # User-specific stuff
 .idea/**/workspace.xml
 .idea/**/tasks.xml
