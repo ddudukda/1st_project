@@ -6,11 +6,11 @@ insert into user_account (user_id, user_password, nickname, email, memo, created
 values ('dadak', 'asdf1234', 'Dadak', 'dadak@mail.com', 'Hello.', now(), 'dadak', now(), 'dadak');
 
 -- 게시글 3개
-insert into article (user_account_id, title, content, hashtag, created_at, created_by, modified_at, modified_by) values (1,'Least chipmunk', 'Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.', 'Blue', '2022-05-26 22:26:22', 'Margie', '2022-06-17 02:17:27', 'Maurie');
+insert into article (user_account_id, title, content, hashtag, created_at, created_by, modified_at, modified_by) values (1,'Least chipmunk', 'Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.', '#Blue', '2022-05-26 22:26:22', 'Margie', '2022-06-17 02:17:27', 'Maurie');
 insert into article (user_account_id, title, content, hashtag, created_at, created_by, modified_at, modified_by) values (1,'Cockatoo, red-tailed', 'Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.
-Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.', 'Goldenrod', '2022-03-18 14:08:15', 'Jefferey', '2022-07-03 08:55:45', 'Bevan');
+Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.', '#Goldenrod', '2022-03-18 14:08:15', 'Jefferey', '2022-07-03 08:55:45', 'Bevan');
 insert into article (user_account_id, title, content, hashtag, created_at, created_by, modified_at, modified_by) values (2,'Two-toed sloth', 'Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.
-Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.', 'Green', '2022-04-23 15:38:27', 'Orran', '2022-06-17 11:33:29', 'Diane-marie');
+Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.', '#Green', '2022-04-23 15:38:27', 'Orran', '2022-06-17 11:33:29', 'Diane-marie');
 
 -- 댓글 10개
 insert into article_comment (article_id, user_account_id, content, created_at, created_by, modified_at, modified_by) values (1, 1 ,'Tarantula, salmon pink bird eater', '2022-05-29 02:37:05', 'Garland', '2022-02-12 10:19:56', 'Conchita');
