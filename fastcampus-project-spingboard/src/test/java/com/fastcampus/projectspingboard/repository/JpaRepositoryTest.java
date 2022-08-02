@@ -41,7 +41,7 @@ class JpaRepositoryTest {
         //then
         assertThat(articles)
                 .isNotNull()
-                .hasSize(3);
+                .hasSize(103);
 
     }
     @DisplayName("insert 테스트")
