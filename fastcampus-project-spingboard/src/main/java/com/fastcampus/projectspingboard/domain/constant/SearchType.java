@@ -1,4 +1,4 @@
-package com.fastcampus.projectspingboard.domain.type;
+package com.fastcampus.projectspingboard.domain.constant;
 
 import lombok.Getter;
 
