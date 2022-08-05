@@ -2,6 +2,7 @@ package com.fastcampus.projectspingboard.repository;
 
 import com.fastcampus.projectspingboard.domain.Article;
 import com.fastcampus.projectspingboard.domain.QArticle;
+import com.fastcampus.projectspingboard.dto.ArticleDto;
 import com.fastcampus.projectspingboard.repository.querydsl.ArticleRepositoryCustom;
 import com.querydsl.core.types.dsl.DateTimeExpression;
 import com.querydsl.core.types.dsl.StringExpression;
