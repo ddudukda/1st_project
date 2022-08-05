@@ -2,7 +2,6 @@ package com.fastcampus.projectspingboard.controller;
 
 import com.fastcampus.projectspingboard.domain.constant.FormStatus;
 import com.fastcampus.projectspingboard.domain.constant.SearchType;
-import com.fastcampus.projectspingboard.dto.UserAccountDto;
 import com.fastcampus.projectspingboard.dto.request.ArticleRequest;
 import com.fastcampus.projectspingboard.dto.response.ArticleResponse;
 import com.fastcampus.projectspingboard.dto.response.ArticleWithCommentsResponse;
@@ -55,10 +54,10 @@ public class ArticleController {
 
     @GetMapping("/search-hashtag")
     public String searchArticleHashtag(
-                    @RequestParam(required = false) String searchValue,
-                    @PageableDefault(size = 10, sort = "createdAt", direction = Sort.Direction.DESC) Pageable pageable,
-                    ModelMap map
-    ){
+            @RequestParam(required = false) String searchValue,
+            @PageableDefault(size = 10, sort = "createdAt", direction = Sort.Direction.DESC) Pageable pageable,
+            ModelMap map
+    ) {
         Page<ArticleResponse> articles = articleService.searchArticlesViaHashtag(searchValue, pageable).map(ArticleResponse::from);
         List<Integer> barNumbers = paginationService.getPaginationBarNumbers(pageable.getPageNumber(), articles.getTotalPages());
         List<String> hashtags = articleService.getHashtags();
@@ -103,11 +102,12 @@ public class ArticleController {
             @PathVariable Long articleId,
             @AuthenticationPrincipal BoardPrincipal boardPrincipal,
             ArticleRequest articleRequest
-) {
+    ) {
         articleService.updateArticle(articleId, articleRequest.toDto(boardPrincipal.toDto()));
 
         return "redirect:/articles/" + articleId;
     }
+
 
     @PostMapping ("/{articleId}/delete")
     public String deleteArticle(
