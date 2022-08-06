@@ -8,12 +8,8 @@
 ### JPA Buddy
 .jpb/
 
-
 ### Querydsl
 /src/main/generated
-
-### JPABUDDY
-.jpb/
 
 # User-specific stuff
 .idea/**/workspace.xml

@@ -21,19 +21,20 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
-                .authorizeRequests(auth -> auth
+                .authorizeHttpRequests(auth -> auth
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                        .mvcMatchers(HttpMethod.GET,
+                        .mvcMatchers(
+                                HttpMethod.GET,
                                 "/",
                                 "/articles",
-                                "/articles/search-hastag"
+                                "/articles/search-hashtag"
                         ).permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin().and()
                 .logout()
-                        .logoutSuccessUrl("/")
-                        .and()
+                .logoutSuccessUrl("/")
+                .and()
                 .build();
     }
 
@@ -50,11 +51,12 @@ public class SecurityConfig {
                 .findById(username)
                 .map(UserAccountDto::from)
                 .map(BoardPrincipal::from)
-                .orElseThrow(() -> new UsernameNotFoundException("유저를 찾을 수 없습니다 - username:" + username));
+                .orElseThrow(() -> new UsernameNotFoundException("유저를 찾을 수 없습니다 - username: " + username));
     }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
+
 }
