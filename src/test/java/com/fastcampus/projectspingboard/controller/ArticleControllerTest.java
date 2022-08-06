@@ -1,6 +1,5 @@
 package com.fastcampus.projectspingboard.controller;
 
-import com.fastcampus.projectspingboard.config.SecurityConfig;
 import com.fastcampus.projectspingboard.config.TestSecurityConfig;
 import com.fastcampus.projectspingboard.domain.constant.FormStatus;
 import com.fastcampus.projectspingboard.domain.constant.SearchType;
@@ -12,6 +11,7 @@ import com.fastcampus.projectspingboard.dto.response.ArticleResponse;
 import com.fastcampus.projectspingboard.service.ArticleService;
 import com.fastcampus.projectspingboard.service.PaginationService;
 import com.fastcampus.projectspingboard.util.FormDataEncoder;
+
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -168,7 +168,6 @@ class ArticleControllerTest {
         then(articleService).should().getArticleCount();
     }
 
-
     @Disabled("구현 중")
     @DisplayName("[view][GET] 게시글 검색 전용 페이지 호출")
     @Test
@@ -184,28 +183,25 @@ class ArticleControllerTest {
 
     @DisplayName("[view][GET] 게시글 해시태그 검색 페이지 - 정상 호출")
     @Test
-    public void givenNothing_whenRequestArticleSearchHashtagView_thenReturnArticleHashtagSearchView() throws Exception {
-        //given
+    public void givenNothing_whenRequestingArticleSearchHashtagView_thenReturnsArticleSearchHashtagView() throws Exception {
+        // Given
         List<String> hashtags = List.of("#java", "#spring", "#boot");
         given(articleService.searchArticlesViaHashtag(eq(null), any(Pageable.class))).willReturn(Page.empty());
         given(articleService.getHashtags()).willReturn(hashtags);
         given(paginationService.getPaginationBarNumbers(anyInt(), anyInt())).willReturn(List.of(1, 2, 3, 4, 5));
 
-
-        //when&then
+        // When & Then
         mvc.perform(get("/articles/search-hashtag"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("articles/search-hashtag"))
                 .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
+                .andExpect(view().name("articles/search-hashtag"))
                 .andExpect(model().attribute("articles", Page.empty()))
                 .andExpect(model().attribute("hashtags", hashtags))
-                .andExpect(model().attribute("searchType", SearchType.HASHTAG))
-                .andExpect(model().attributeExists("paginationBarNumbers"));
-
+                .andExpect(model().attributeExists("paginationBarNumbers"))
+                .andExpect(model().attribute("searchType", SearchType.HASHTAG));
         then(articleService).should().searchArticlesViaHashtag(eq(null), any(Pageable.class));
         then(articleService).should().getHashtags();
         then(paginationService).should().getPaginationBarNumbers(anyInt(), anyInt());
-
     }
 
     @DisplayName("[view][GET] 게시글 해시태그 검색 페이지 - 정상 호출, 해시태그 입력")
@@ -228,8 +224,8 @@ class ArticleControllerTest {
                 .andExpect(view().name("articles/search-hashtag"))
                 .andExpect(model().attribute("articles", Page.empty()))
                 .andExpect(model().attribute("hashtags", hashtags))
-                .andExpect(model().attributeExists("paginationBarNumbers"));
-
+                .andExpect(model().attributeExists("paginationBarNumbers"))
+                .andExpect(model().attribute("searchType", SearchType.HASHTAG));
         then(articleService).should().searchArticlesViaHashtag(eq(hashtag), any(Pageable.class));
         then(articleService).should().getHashtags();
         then(paginationService).should().getPaginationBarNumbers(anyInt(), anyInt());
