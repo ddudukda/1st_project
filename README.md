@@ -32,4 +32,4 @@ Spring Boot
 
 ## 데모 페이지
 
-* https://spring-board-test.herokuapp.com/
+* https://project-board-test.herokuapp.com/
