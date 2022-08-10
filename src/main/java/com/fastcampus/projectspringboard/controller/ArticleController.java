@@ -104,7 +104,6 @@ public class ArticleController {
             ArticleRequest articleRequest
     ) {
         articleService.updateArticle(articleId, articleRequest.toDto(boardPrincipal.toDto()));
-
         return "redirect:/articles/" + articleId;
     }
 
