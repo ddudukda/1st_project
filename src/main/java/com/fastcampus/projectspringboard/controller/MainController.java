@@ -10,4 +10,9 @@ public class MainController {
     public String root(){
         return "forward:/articles";
     }
+
+    @GetMapping("/sign-up")
+    public String signUp(){
+        return "sign-up";
+    }
 }
