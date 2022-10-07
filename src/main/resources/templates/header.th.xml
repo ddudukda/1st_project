@@ -3,6 +3,8 @@
     <attr sel="#home" th:href="@{/}" />
     <attr sel="#hashtag" th:href="@{/articles/search-hashtag}" />
 
+    <attr sel ="#sign-up" sec:authorize="isAnonymous()" th:href="@{/sign-up}" />
+
     <attr sel="#username" sec:authorize="isAuthenticated()" sec:authentication="name" />
     <attr sel="#login" sec:authorize="!isAuthenticated()" th:href="@{/login}" />
     <attr sel="#logout" sec:authorize="isAuthenticated()" th:href="@{/logout}" />
