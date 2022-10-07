@@ -1,6 +1,9 @@
 # springboard
 게시판 서비스 프로젝트
 
+## 데모 페이지
+* https://project-board-test.herokuapp.com/
+
 ## 개발 환경
 
 * Intellij IDEA Ultimate 2022.1.3
@@ -30,6 +33,3 @@ Spring Boot
 * Bootstrap 5.2.0-Beta1
 * Heroku
 
-## 데모 페이지
-
-* https://project-board-test.herokuapp.com/
